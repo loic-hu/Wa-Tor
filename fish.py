@@ -1,6 +1,6 @@
+import random
 
-
-# Classe reprÃ©sentant un poisson dans la grille
+# Classe representant un poisson dans la grille
 class Fish:
     
     def __init__(self, x, y, pregnancy, gestation_period):
@@ -9,14 +9,50 @@ class Fish:
         self.pregnancy = pregnancy
         self.gestation_period = gestation_period
 
-    def look_out (self):
-         pass    
+        
 
-    def move (self):
-         pass
+    def __repr__(self):
+        return "F"
 
-    def reproduce (self):
-         pass
+    def look_out (self, largeur, hauteur): #regarde les cases disponibles
+            cases_vides = []
+                # Directions : haut, bas, gauche, droite
+            directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+
+            new_x = (self.x + directions.x) % largeur
+            new_y = (self.y + directions.y) % hauteur
+         
+            if not cases_vides: #si aucune case n'est libre le fish ne bouge pas
+                return None
+          
+
+    def move (self, x, y): #deplacement aleatoire
+        
+        #deplace au hasard (random.choice) en fonction des cases disponibles
+        new_x, new_y = random.choice(cases_vides)
+        old_x, old_y = self.x, self.y
+
+        # Déplacer le poisson
+        [old_y],[old_x] = None
+        self.x, self.y = new_x, new_y
+        [new_y],[new_x] = self
+        
+
+        if self.pregnancy >= self.gestation_period:
+            self.reproduce()
+
+    def reproduce (self,pregnancy, x, y):
+            #gestion de la reproduction
+        
+        pregnancy = 0 
+        baby_fish = Fish(x, y) #position baby fish
+            
+        pregnancy += 1 
+            
+        return baby_fish  
+                                 
+                             
+                         
 
     
     """
@@ -50,8 +86,16 @@ class Fish:
             """
 
 
+        
+        
+        
+
+       
+        
+       
             
-                
+                        
+                       
         
 
 

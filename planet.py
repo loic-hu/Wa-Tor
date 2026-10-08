@@ -1,21 +1,38 @@
 import random
+from fish import Fish
+from shark import Shark
 
+    
 class Planet:
-    def __init__(self, width, lenght, chronon):
-        self.width = width
-        self.lenght = lenght
+    def __init__(self, column, row, chronon):
+        self.column = column
+        self.row = row
         self.chronon = chronon
-        self.matrice = [[]]
+        self.types = ["fish", "shark", None]
+        self.poids = [17, 10, 73]
+        self.matrice = []
 
     def populate(self):
-        self.matrice = [random.choices(["F", "S", " "], weights=[17, 10, 73], k=self.lenght) for _ in range(self.width)]
+        for y in range(self.row):
+            ligne = []
+            for x in range(self.column):
+                choix = random.choices(self.types, weights=self.poids, k=1)[0]
+                if choix == "fish":
+                    ligne.append(Fish(x, y, 0, 6))
+                elif choix == "shark":
+                    ligne.append(Shark(x, y, 0, 8, 10, 20, 4))
+                else:
+                    ligne.append("\033[44m  \033[0m")
+            self.matrice.append(ligne)
         return self.matrice
 
-# def __repr__()
     def show_planet(self):
-        for ligne in range(len(self.matrice)):
+        for ligne in self.matrice:
+            for case in ligne:
+                print(case, end=" ")
             print()
-            for colonne in range(len(self.plamatricenete)):
-                print(self.matrice[ligne][colonne], end=" ")
 
-    #def remplir
+
+
+
+

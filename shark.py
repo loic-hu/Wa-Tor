@@ -29,7 +29,7 @@ class Shark(Fish):
         for case in adj_cases:
             if matrice[case[1]][case[0]] == None:
                 empty_cases.append(case)
-            elif isinstance(matrice[case[1]][case[0]], Fish):
+            elif isinstance(matrice[case[1]][case[0]], Fish) and not isinstance(matrice[case[1]][case[0]], Shark):
                 food_cases.append(case)
 
         if food_cases:
@@ -56,7 +56,14 @@ class Shark(Fish):
         return
 
     def eat(self, matrice, food):
+        
+        target_x = food[0]
+        target_y = food[1]
 
-        print(matrice[food[1]][food[0]].x, matrice[food[1]][food[0]].y)
+        matrice[target_x][target_y] = self
+
+        return
+
+
 
 

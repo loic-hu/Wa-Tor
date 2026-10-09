@@ -1,6 +1,6 @@
 import random
 
-class Fish: #Represente les capacitées du fish
+class Fish: #Initialisation
     
     def __init__(self, x, y, gestation_period, Planet): 
         self.x = x
@@ -9,57 +9,46 @@ class Fish: #Represente les capacitées du fish
         self.pregnancy = 0  
         self.gestation_period = gestation_period
 
-        """
-        Position initiale, duree de gestation_period, initialisation de pregnancy a 0
-        """
 
-    def __repr__(self): #renvoi une image "F" pour fish
+    def __repr__(self): #Image "F"
         return "F"
 
-    def look_out(self, matrice): #regarde les cases disponibles et retournes les coordonnées
+    def look_out(self, matrice): #Regarde les cases disponibles et retournes les coordonnées
         blank_cell = []
         
-        adj_cases = [matrice[( self.y - 1 ) % len(matrice)][self.x],
+        adj_cases = [matrice[( self.y - 1 ) % len(matrice)][self.x], 
                      matrice[( self.y + 1 ) % len(matrice)][self.x],
                      matrice[self.y][( self.x -1 ) % len(matrice[0])],
                      matrice[self.y][( self.x + 1) % len(matrice[0])]]
 
-        for case in adj_cases:
+        for case in adj_cases: #Parcours les cases adjacente et stock les cases vide dans blank.cell.append(case)
              if case == None :
                 blank_cell.append(case)
 
-        if blank_cell :
-            move()
-
-
-        return blank_cell
-
+        if blank_cell : #Choisis de se deplacer si des cases adjacente sont vide
+                return blank_cell
         
 
-    def move(self, grid, rows, columns): 
-            # cherche les cases disponibles
-            blank_cell = self.look_out(grid, rows, columns)
+    def move(self, grid, matrice): 
+        # Cherche les cases disponibles
+        blank_cell = self.look_out(grid)
         
-            self.pregnancy += 1 #rajoute une unitée a chaque chronon
-        
-            #le poisson ne bouge pas si pas de cases vide a proximité
-            if not blank_cell:
-                return None
+        self.pregnancy += 1 #Rajoute une unitée a chaque chronon
 
-            #Déplacement aléatoire avec random.choice
-            new_x, new_y = random.choice(blank_cell) #-> uniquement
-            old_x, old_y = self.x, self.y #ancienne coordonnées deviennent reference avant mise a jour
+        #Déplacement aléatoire avec random.choice
+        new_x, new_y = random.choice(blank_cell) #-> uniquement
+        old_x, old_y = self.x, self.y #ancienne coordonnées deviennent reference avant mise a jour
 
-            # Mettre à jour la grille et les coordonnées du poisson
-            grid[old_x][old_y] = None
-            self.x, self.y = new_x, new_y
-            grid[new_x][new_y] = self
+        # Mettre à jour la grille et les coordonnées du poisson
+        self.x, self.y = new_x, new_y
+        matrice[old_x][old_y] = None
+        matrice[new_x][new_y] = self
         
-            #Gestion de la reproduction
-            if self.pregnancy >= self.gestation_period:
-            #baby sur la old position
-                baby = self.reproduce(old_x, old_y) #baby se retrouve sur la case d'origine fish avant le deplacement de celui ci
-                grid[old_x][old_y] = baby
+        #Gestion de la reproduction
+        if self.pregnancy >= self.gestation_period:
+        #baby sur la old position
+            baby = self.reproduce(old_x, old_y) #baby se retrouve sur la case d'origine fish avant le deplacement de celui ci
+            matrice[old_x][old_y] = baby
             return baby 
             
     def reproduce(self, x, y): #reinitialise pregnancy a 0
@@ -67,7 +56,34 @@ class Fish: #Represente les capacitées du fish
         return Fish(x, y, self.gestation_period)
 
         
+       
+
         
+
+        
+       
+
+       
+
+    
+        
+        
+
+
+    
+
+   
+
+
+
+    
+
+    
+
+   
+
+    
+ 
 
        
         

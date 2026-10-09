@@ -60,7 +60,11 @@ class Shark(Fish):
         target_x = food[0]
         target_y = food[1]
 
+        matrice[self.y][self.x] = None
         matrice[target_x][target_y] = self
+
+        self.x = target_x
+        self.y = target_y
 
         return
 

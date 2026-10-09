@@ -2,9 +2,10 @@ import random
 
 class Fish: #Represente les capacitées du fish
     
-    def __init__(self, x, y, gestation_period): 
+    def __init__(self, x, y, gestation_period, Planet): 
         self.x = x
         self.y = y
+        self.Planet = Planet
         self.pregnancy = 0  
         self.gestation_period = gestation_period
 
@@ -15,20 +16,22 @@ class Fish: #Represente les capacitées du fish
     def __repr__(self): #renvoi une image "F" pour fish
         return "F"
 
-    def look_out(self, grid, rows, columns): #regarde les cases disponibles et retournes les coordonnées
+    def look_out(self, matrice): #regarde les cases disponibles et retournes les coordonnées
         blank_cell = []
         
-        # Directions : haut, bas, gauche, droite
-        directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+        adj_cases = [matrice[( self.y - 1 ) % len(matrice)][self.x],
+                     matrice[( self.y + 1 ) % len(matrice)][self.x],
+                     matrice[self.y][( self.x -1 ) % len(matrice[0])],
+                     matrice[self.y][( self.x + 1) % len(matrice[0])]]
 
-        for dx, dy in directions: #a relire
-            # Position avec modulo
-            nx = (self.x + dx) % rows
-            ny = (self.y + dy) % columns
-            # Si la case dans la grille est vide 
-            if grid[nx][ny] is None:
-                blank_cell.append((nx, ny))
-                
+        for case in adj_cases:
+             if case == None :
+                blank_cell.append(case)
+
+        if blank_cell :
+            move()
+
+
         return blank_cell
 
         

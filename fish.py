@@ -11,46 +11,50 @@ class Fish: #Initialisation
 
 
     def __repr__(self): #Image "F"
-        return "F"
+        return "\033[42m  \033[0m"
 
     def look_out(self, matrice): #Regarde les cases disponibles et retournes les coordonnées
-        blank_cell = []
+        empty_cases = []
         
-        adj_cases = [matrice[( self.y - 1 ) % len(matrice)][self.x], 
-                     matrice[( self.y + 1 ) % len(matrice)][self.x],
-                     matrice[self.y][( self.x -1 ) % len(matrice[0])],
-                     matrice[self.y][( self.x + 1) % len(matrice[0])]]
+        adj_cases = [(self.x, (self.y - 1 ) % len(matrice)),
+                             (self.x, ( self.y + 1 ) % len(matrice)),
+                             (( self.x -1 ) % len(matrice[0]), self.y),
+                             (( self.x + 1) % len(matrice[0]), self.y)
+                             ]
 
-        for case in adj_cases: #Parcours les cases adjacente et stock les cases vide dans blank.cell.append(case)
-             if case == None :
-                blank_cell.append(case)
+        for case in adj_cases:#Parcours les cases adjacente et stock les cases vide dans blank.cell.append(case)
+            if matrice[case[1]][case[0]] == None:
+                empty_cases.append(case)
 
-        if blank_cell : #Choisis de se deplacer si des cases adjacente sont vide
-                return blank_cell
-        
+        if empty_cases:
+            dest = random.choice(empty_cases)
+            self.move(matrice, dest )
+        else:
+            return
 
-    def move(self, grid, matrice): 
-        # Cherche les cases disponibles
-        blank_cell = self.look_out(grid)
+    def move(self, matrice, coordinates): 
         
         self.pregnancy += 1 #Rajoute une unitée a chaque chronon
 
-        #Déplacement aléatoire avec random.choice
-        new_x, new_y = random.choice(blank_cell) #-> uniquement
-        old_x, old_y = self.x, self.y #ancienne coordonnées deviennent reference avant mise a jour
+        new_x = coordinates[0]
+        new_y = coordinates[1]
 
-        # Mettre à jour la grille et les coordonnées du poisson
-        self.x, self.y = new_x, new_y
-        matrice[old_x][old_y] = None
-        matrice[new_x][new_y] = self
         
+        matrice[self.y][self.x] = None
+        matrice[new_y][new_x] = self
+
+        self.x = new_x
+        self.y = new_y
+
+        return 
+        """
         #Gestion de la reproduction
         if self.pregnancy >= self.gestation_period:
         #baby sur la old position
             baby = self.reproduce(old_x, old_y) #baby se retrouve sur la case d'origine fish avant le deplacement de celui ci
             matrice[old_x][old_y] = baby
             return baby 
-            
+            """
     def reproduce(self, x, y): #reinitialise pregnancy a 0
         self.pregnancy = 0 
         return Fish(x, y, self.gestation_period)

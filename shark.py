@@ -38,6 +38,8 @@ class Shark(Fish):
         elif empty_cases:
             dest = random.choice(empty_cases)
             self.move(matrice, dest )
+        else:
+            return
 
 
     def move(self, matrice, coordinates):
@@ -45,13 +47,13 @@ class Shark(Fish):
         new_x = coordinates[0]
         new_y = coordinates[1]
 
-        print(f"new x : {new_x}, new y : {new_y}")
         matrice[self.y][self.x] = None
         matrice[new_y][new_x] = self
 
         self.x = new_x
         self.y = new_y
-        print(f"nouvelles coordonnées : {self.x, self.y}")
+
+        return
 
     def eat(self, matrice, food):
 

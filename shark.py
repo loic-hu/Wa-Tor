@@ -9,11 +9,12 @@ class Shark(Fish):
         self.energy = energy
         self.max_energy = max_energy
         self.energy_regain = energy_regain
+        self.pregnancy = 0
+
 
     def __repr__(self):
 
         return "\033[41m  \033[0m"
-
 
     def look_out(self, matrice):
        
@@ -25,6 +26,12 @@ class Shark(Fish):
 
         empty_cases = []
         food_cases = []
+        origin = (self.x, self.y)
+
+        if self.energy == 0:
+
+            self.die(matrice)
+            return
      
         for case in adj_cases:
             if matrice[case[1]][case[0]] == None:
@@ -41,6 +48,17 @@ class Shark(Fish):
         else:
             return
 
+        self.pregnancy += 1
+
+        if self.pregnancy >= self.gestation_period:
+
+            self.reproduce(matrice, origin)
+
+        self.energy -= 1
+
+        return
+
+        
 
     def move(self, matrice, coordinates):
 
@@ -53,7 +71,6 @@ class Shark(Fish):
         self.x = new_x
         self.y = new_y
 
-        return
 
     def eat(self, matrice, food):
         
@@ -61,13 +78,24 @@ class Shark(Fish):
         target_y = food[1]
 
         matrice[self.y][self.x] = None
-        matrice[target_x][target_y] = self
+        matrice[target_y][target_x] = self
 
         self.x = target_x
         self.y = target_y
 
-        return
+        self.energy += self.energy_regain
+        if self.energy > self.max_energy :
+            self.energy = self.max_energy
 
+
+    def reproduce(self, matrice, origin):
+  
+        matrice[origin[1]][origin[0]] = Shark(origin[0], origin[1], 5, 3, 10, 4)
+        self.pregnancy = 0
+
+    def die(self, matrice):
+
+        matrice[self.y][self.x] = None
 
 
 

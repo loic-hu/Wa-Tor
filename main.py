@@ -1,12 +1,11 @@
 import matplotlib.pyplot as plt
-import os, random
-
-from fish import Fish
-from shark import Shark
+import os
 
 from planet import Planet
+
 from graph import Graph
 from config import env_config1 as env_cfg, graph_config as graph_cfg
+
 
 os.system('clear')
 

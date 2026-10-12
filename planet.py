@@ -1,6 +1,11 @@
-import main as tg
+#import main
+import random
 
-from config import env_config1 as env_cfg
+from fish import Fish
+from shark import Shark
+
+#from config import env_config1 as env_cfg
+from config import env_config1 as env_cfg, graph_config as graph_cfg
 
     
 class Planet:
@@ -48,11 +53,11 @@ class Planet:
         for y in range(self.row):
             ligne = []
             for x in range(self.column):
-                choix = tg.random.choices(self.types, weights=self.weight, k=1)[0]
+                choix = random.choices(self.types, weights=self.weight, k=1)[0]
                 if choix == "fish":
-                    ligne.append(tg.Fish(x, y, env_cfg.fish_config["gestation_period"]))
+                    ligne.append(Fish(x, y, env_cfg.fish_config["gestation_period"]))
                 elif choix == "shark":
-                    ligne.append(tg.Shark(x, y,
+                    ligne.append(Shark(x, y,
                                        env_cfg.shark_config["gestation_period"], 
                                        env_cfg.shark_config["energy"],
                                        env_cfg.shark_config["max_energy"],

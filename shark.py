@@ -22,16 +22,19 @@ class Shark(Fish):
         pregnancy (int) : le nombre de cycles de l'entité, si pregnancy est égal à gestation_period, alors la reproduction est possible
     """
 
-    def __init__(self, x, y, gestation_period, energy, max_energy, energy_regain):
+    def __init__(self, x, y,):
         """
         Initialise l'objet Shark avec ses attributs.
         """
 
-        super().__init__(x, y, gestation_period)
-        self.energy = energy
-        self.max_energy = max_energy
-        self.energy_regain = energy_regain
+        from config import env_config1 as env_cfg
+
+        super().__init__(x, y)
+        self.energy = env_cfg.shark_config["energy"]
+        self.max_energy = env_cfg.shark_config["max_energy"],
+        self.energy_regain = env_cfg.shark_config["energy_regain"],
         self.pregnancy = 0
+        self.gestation_period = env_cfg.shark_config["gestation_period"]
 
 
     def __repr__(self):
@@ -190,7 +193,7 @@ class Shark(Fish):
         """
 
         # Aux coordonées d'origines dans la matrice, crée une nouvelle entité Shark
-        matrice[origin[1]][origin[0]] = Shark(origin[0], origin[1], 5, 3, 10, 4)
+        matrice[origin[1]][origin[0]] = Shark(origin[0], origin[1])
 
         # Reset le compteur de pregnancy
         self.pregnancy = 0

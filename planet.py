@@ -37,8 +37,12 @@ class Planet:
         self.weight = weight
         self.chronon = 1
         self.types = ["fish", "shark", None]
-        self.matrice = []
+        self._matrice = []
 
+    @property
+    def matrice(self) -> list[list[Fish | Shark | None]]:
+
+        return self._matrice
 
     def populate(self):
         """Remplit aléatoirement la grille avec des poissons, des requins ou du vide.
@@ -55,13 +59,9 @@ class Planet:
             for x in range(self.column):
                 choix = random.choices(self.types, weights=self.weight, k=1)[0]
                 if choix == "fish":
-                    ligne.append(Fish(x, y, env_cfg.fish_config["gestation_period"]))
+                    ligne.append(Fish(x, y))
                 elif choix == "shark":
-                    ligne.append(Shark(x, y,
-                                       env_cfg.shark_config["gestation_period"], 
-                                       env_cfg.shark_config["energy"],
-                                       env_cfg.shark_config["max_energy"],
-                                       env_cfg.shark_config["energy_regain"]))
+                    ligne.append(Shark(x, y))
                 else:
                     ligne.append(None)
             self.matrice.append(ligne)

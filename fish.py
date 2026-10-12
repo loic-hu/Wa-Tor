@@ -14,11 +14,14 @@ class Fish:
         pregnancy (int) : le nombre de cycles de l'entité, si pregnancy est égal à gestation_period, alors la reproduction est possible
     """
 
-    def __init__(self, x, y, gestation_period): 
+    def __init__(self, x, y): 
+
+        from config import env_config1 as env_cfg
+
         self.x = x
         self.y = y
         self.pregnancy = 0  
-        self.gestation_period = gestation_period
+        self.gestation_period = env_cfg.fish_config["gestation_period"]
 
     def __repr__(self): # Image "F"
         """
@@ -113,7 +116,7 @@ class Fish:
             origin (Tupple(int)) : Les coordonnées de la case d'origine de Fish après un déplacement
         """
         # Aux coordonnées d'origines dans la matrice, crée une nouvelle entité Fish
-        matrice[origin[1]][origin[0]] = Fish(origin[0], origin[1], 4)
+        matrice[origin[1]][origin[0]] = Fish(origin[0], origin[1])
 
         # Reset le compteur de pregnancy
         self.pregnancy = 0

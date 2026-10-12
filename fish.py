@@ -15,10 +15,9 @@ class Fish: #Initialisation
         """
     
     
-def __init__(self, x, y, gestation_period, Planet): 
+def __init__(self, x, y, gestation_period): 
         self.x = x
         self.y = y
-        self.Planet = Planet
         self.pregnancy = 0  
         self.gestation_period = gestation_period
 

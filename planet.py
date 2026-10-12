@@ -1,7 +1,6 @@
-import random
-from collections import Counter
-from fish import Fish
-from shark import Shark
+import main as tg
+
+from config import env_config1 as env_cfg
 
     
 class Planet:
@@ -49,11 +48,15 @@ class Planet:
         for y in range(self.row):
             ligne = []
             for x in range(self.column):
-                choix = random.choices(self.types, weights=self.weight, k=1)[0]
+                choix = tg.random.choices(self.types, weights=self.weight, k=1)[0]
                 if choix == "fish":
-                    ligne.append(Fish(x, y, 0))
+                    ligne.append(tg.Fish(x, y, env_cfg.fish_config["gestation_period"]))
                 elif choix == "shark":
-                    ligne.append(Shark(x, y, 0, 8, 10, 20))
+                    ligne.append(tg.Shark(x, y,
+                                       env_cfg.shark_config["gestation_period"], 
+                                       env_cfg.shark_config["energy"],
+                                       env_cfg.shark_config["max_energy"],
+                                       env_cfg.shark_config["energy_regain"]))
                 else:
                     ligne.append(None)
             self.matrice.append(ligne)
@@ -83,18 +86,10 @@ class Planet:
         afin qu'elle observe son environnement et agisse en conséquence.
         """
         creatures = self.get_all_creatures()
-
-        # ---------------------------------------------------- #
-        # Comptage des requins et des poissons pour vérification
-        # compte_types = Counter(type(element) for element in creatures)
-        # for type_objet, quantite in sorted(compte_types.items(), key=lambda x: x[0].__name__):
-        #     print(f"Type {type_objet.__name__} : {quantite}")
-        # ---------------------------------------------------- #
-
         # Parcours de la liste des créatures présentes sur la grille
         for i in creatures:
             if self.matrice[i.y][i.x] == i:
-                i.look_out(self.matrice)
+                i.life_cycle(self.matrice)
         self.show_planet()
 
 

@@ -113,7 +113,7 @@ class Fish:
             origin (Tupple(int)) : Les coordonnées de la case d'origine de Fish après un déplacement
         """
         # Aux coordonnées d'origines dans la matrice, crée une nouvelle entité Fish
-        matrice[origin[1]][origin[0]] = Fish(origin[0], origin[1], 5, 3, 10, 4)
+        matrice[origin[1]][origin[0]] = Fish(origin[0], origin[1], 4)
 
         # Reset le compteur de pregnancy
         self.pregnancy = 0

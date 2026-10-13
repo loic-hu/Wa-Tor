@@ -4,6 +4,7 @@ import random
 from world.fish import Fish
 from world.shark import Shark
 from world.flying_fish import Flying_fish
+from world.super_fish import Super_fish
 
 #from config import env_config1 as env_cfg
 from config import env_config1 as env_cfg, graph_config as graph_cfg
@@ -13,15 +14,15 @@ class Planet:
     """Représente une planète sous forme d'une matrice peuplée de poissons, de requins et de vide.
 
     La planète est modélisée par une matrice de ``row`` lignes et ``column`` colonnes. 
-    Chaque case contient soit un ``Fish``, soit un ``Shark``, soit ``None`` (case d'eau vide).
+    Chaque case contient soit un ``Fish``, soit un ``Shark``, soit ` |`None`` (case d'eau vide).
 
     Attributes:
         column (int): Nombre de colonnes de la grille (largeur).
         row (int): Nombre de lignes de la grille (hauteur).
         weight (list[int]): weight de probabilité associés à chaque type lors du peuplement initial
         chronon (int): Unité de temps de la simulation.
-        types (list): Types de contenu possibles pour une case (``"fish"``, ``"shark"`` ou ``None``).
-        matrice (list[list]): Grille 2D contenant les créatures ou ``None``.
+        types (list): Types de contenu possibles pour une case (``"fish"``, ``"shark"`` ou ` |`None``).
+        matrice (list[list]): Grille 2D contenant les créatures ou ` |`None``.
     """
     def __init__(self, column, row, weight):
         """Initialise la planète avec ses dimensions et une grille vide.
@@ -37,11 +38,11 @@ class Planet:
         self.row = row
         self.weight = weight
         self.chronon = 1
-        self.types = ["fish", "shark", "flying_fish", None]
+        self.types = ["fish", "shark", "flying_fish", "super_fish", None]
         self._matrice = []
 
     @property
-    def matrice(self) -> list[list[Fish | Shark | Flying_fish | None]]:
+    def matrice(self) -> list[list[Fish | Shark | Flying_fish | Super_fish | None]]:
         return self._matrice
 
     def populate(self):
@@ -65,6 +66,8 @@ class Planet:
                     ligne.append(Shark(x, y))
                 elif choix == "flying_fish":
                     ligne.append(Flying_fish(x, y))
+                elif choix == "super_fish":
+                    ligne.append(Super_fish(x, y))
                 else:
                     ligne.append(None)
             self.matrice.append(ligne)

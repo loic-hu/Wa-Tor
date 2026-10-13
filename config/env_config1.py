@@ -3,7 +3,7 @@
 
 # planet
 x, y = 60,60
-weight = [15, 9, 4, 72]
+weight = [7, 8, 4, 4, 77]
 
 # fish
 fish_config = {
@@ -20,6 +20,11 @@ shark_config = {
 
 # flying_fish
 flying_fish_config = {
+    "gestation_period" : 4
+}
+
+# super_fish
+super_fish_config = {
     "gestation_period" : 4
 }
 

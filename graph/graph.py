@@ -38,6 +38,7 @@ class Graph:
         self.fish_historical = deque(maxlen=max_points)
         self.shark_historical = deque(maxlen=max_points)
         self.flying_fish_historical = deque(maxlen=max_points)
+        self.super_fish_historical = deque(maxlen=max_points)
 
         # Mode interactif : la fenêtre se met à jour sans bloquer le programme
         plt.ion()
@@ -50,6 +51,7 @@ class Graph:
         self.fish_ligne, = self.ax.plot([], [], label="Fishs", color="lime")
         self.shark_ligne, = self.ax.plot([], [], label="Sharks", color="tab:red")
         self.flying_fish_ligne, = self.ax.plot([], [], label="Flying fishs", color="darkgreen")
+        self.super_fish_ligne, = self.ax.plot([], [], label="Super fishs", color="tab:orange")
 
         # Titres des axes et du graphique
         self.ax.set_xlabel("Chronon")
@@ -70,7 +72,7 @@ class Graph:
 
     def update(self):
         """Compte les créatures, met à jour l'historique et rafraîchit les courbes."""
-        # Compte le nombre d'objets de chaque classe : {"Fish": ..., "Shark": ... "Flying_fish": ...}
+        # Compte le nombre d'objets de chaque classe : {"Fish": ..., "Shark": ... "Flying_fish": ... "Super_fish": ...}
         count = Counter(type(c).__name__ for c in self.world.get_all_creatures())
 
         # Ajoute les effectifs du chronon courant à l'historique
@@ -78,11 +80,13 @@ class Graph:
         self.fish_historical.append(count.get("Fish", 0))
         self.shark_historical.append(count.get("Shark", 0))
         self.flying_fish_historical.append(count.get("Flying_fish", 0))
+        self.super_fish_historical.append(count.get("Super_fish", 0))
 
         # Met à jour les points des courbes : x = numéro du point, y = effectif
         self.fish_ligne.set_data(range(len(self.fish_historical)), self.fish_historical)
         self.shark_ligne.set_data(range(len(self.shark_historical)), self.shark_historical)
         self.flying_fish_ligne.set_data(range(len(self.flying_fish_historical)), self.flying_fish_historical)
+        self.super_fish_ligne.set_data(range(len(self.super_fish_historical)), self.super_fish_historical)
 
         # Recalcule les limites des axes pour que les courbes restent visibles
         self.ax.relim()

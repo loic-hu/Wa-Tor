@@ -31,8 +31,8 @@ class Shark(Fish):
 
         super().__init__(x, y)
         self.energy = env_cfg.shark_config["energy"]
-        self.max_energy = env_cfg.shark_config["max_energy"],
-        self.energy_regain = env_cfg.shark_config["energy_regain"],
+        self.max_energy = env_cfg.shark_config["max_energy"]
+        self.energy_regain = env_cfg.shark_config["energy_regain"]
         self.pregnancy = 0
         self.gestation_period = env_cfg.shark_config["gestation_period"]
 

@@ -3,8 +3,11 @@
 </p>
 
 
+<center>
 
 # Wa-Tor
+
+</center>
 
 Ce projet implémente une simulation de l'écosystème **Wa-Tor** en programmation orientée objet. Il s'agit d'une modélisation de vie marine peuplée de poissons et de requins, où chaque entité agit de manière autonome et se déplace en fonction de son environnement.
 
@@ -12,7 +15,8 @@ Wa-Tor est une simulation où deux types d'espèces interagissent dans un enviro
 *   **Les poissons :** Ils se déplacent librement et se reproduisent après un certain nombre de cycles.
 *   **Les requins :** Ils chassent les poissons pour survivre, se déplacent et se reproduisent. En l'absence de nourriture, ils perdent de l'énergie et meurent d'inanition.
 
----
+
+<center>
 
 ## Table des matières
 *   [Fonctionnalités](#fonctionnalités)
@@ -23,7 +27,9 @@ Wa-Tor est une simulation où deux types d'espèces interagissent dans un enviro
 *   [Limites connues](#limites-knows)
 *   [Contributeurs](#contributeurs)
 
----
+</center>
+
+<center>
 
 ## Fonctionnalités
 
@@ -33,9 +39,14 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 *   **Système de prédation :** Les requins ciblent prioritairement les poissons proches pour se nourrir.
 *   **Gestion de l'énergie :** Les requins consomment de l'énergie à chaque déplacement et meurent si leur jauge tombe à zéro.
 
----
+</center>
+
+
+<center>
 
 ## Structure du projet
+
+</center>
 
 ```text
 
@@ -58,11 +69,12 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 ```
 
 ---
+<center>
 
 ## Installation
 
 ### Prérequis
-*   **Python** (version $\ge$ 3.9)
+* **Python** (version $\ge$ 3.9)
 
 ### Clonage du projet
 ```bash
@@ -116,7 +128,7 @@ La simulation évolue tour par tour (chronons). Pour obtenir un écosystème sta
 *   Loïc HURBLAIN ([@loic-hu](https://github.com))
 *   Xavier Durieux ([@xav02165](https://github.com))
 
-
+</center>
 
 <p align="center">
   <img src="image/banc_poisson.jpg" alt="Banc de poisson" width="500" >

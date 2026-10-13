@@ -32,13 +32,18 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 ## Structure du projet
 
 ```text
-.
+├── _pycache_/
+│     ├── fish.cpython-314.pyc
+│     └── shark.cpython-314.pyc
+├── config/
+│     ├── env_config1.py
+│     └── graph_config.py
+├── .gitignore
 ├── main.py                 
-├──                
-│        
-│       
-├── entities/               
-│   ├── animal.py          
+├── planet.py               
+├── graph.py        
+├── xxxxxx/               
+│   ├── flying_fish.py          
 │   ├── fish.py            
 │   └── shark.py           
 └── README.md               

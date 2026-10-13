@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import os
 
-from planet import Planet
+from world.planet import Planet
 
 from graph.graph import Graph
 from config import env_config1 as env_cfg, graph_config as graph_cfg

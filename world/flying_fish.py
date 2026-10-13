@@ -1,4 +1,4 @@
-from fish import Fish
+from world.fish import Fish
 import random
 
 class Flying_fish(Fish):

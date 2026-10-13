@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="image/requin.jpg" alt="Grand requin blanc" width="400">
+  <img src="image/requin.jpg" alt="Grand requin blanc" width="600">
 </p>
 
 
@@ -43,14 +43,16 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 │     ├── env_config1.py
 │     └── graph_config.py
 ├── image
+│     ├── banc_poisson.jpg
 │     └── requin.jpg
+├── graph
+│     └── graph.py
 ├── .gitignore
-├── main.py                 
-├── planet.py               
-├── graph.py        
-├── xxxxxx/               
+├── main.py                                   
+├── world/               
 │   ├── flying_fish.py          
-│   ├── fish.py            
+│   ├── fish.py  
+│   ├── planet.py 
 │   └── shark.py           
 └── README.md               
 ```
@@ -113,3 +115,9 @@ La simulation évolue tour par tour (chronons). Pour obtenir un écosystème sta
 *   Benoit Michaux ([@ArkantHiris](https://github.com))
 *   Loïc HURBLAIN ([@loic-hu](https://github.com))
 *   Xavier Durieux ([@xav02165](https://github.com))
+
+
+
+<p align="center">
+  <img src="image/banc_poisson.jpg" alt="Banc de poisson" width="500" >
+</p>

@@ -18,7 +18,7 @@ graph = Graph(world, graph_cfg.max_points, graph_cfg.pause)
 # s'arrête si on ferme la fenêtre du graphique
 while plt.fignum_exists(graph.fig.number):  
     os.system('clear')
-    world.update_planet()
+    world.update_planet_V2()
     world.chronon += 1
     print(world.chronon)
     graph.update()

@@ -3,6 +3,7 @@ import random
 
 from fish import Fish
 from shark import Shark
+from flying_fish import Flying_fish
 
 #from config import env_config1 as env_cfg
 from config import env_config1 as env_cfg, graph_config as graph_cfg
@@ -36,12 +37,11 @@ class Planet:
         self.row = row
         self.weight = weight
         self.chronon = 1
-        self.types = ["fish", "shark", None]
+        self.types = ["fish", "shark", "flying_fish", None]
         self._matrice = []
 
     @property
-    def matrice(self) -> list[list[Fish | Shark | None]]:
-
+    def matrice(self) -> list[list[Fish | Shark | Flying_fish | None]]:
         return self._matrice
 
     def populate(self):
@@ -57,11 +57,14 @@ class Planet:
         for y in range(self.row):
             ligne = []
             for x in range(self.column):
+                #
                 choix = random.choices(self.types, weights=self.weight, k=1)[0]
                 if choix == "fish":
                     ligne.append(Fish(x, y))
                 elif choix == "shark":
                     ligne.append(Shark(x, y))
+                elif choix == "flying_fish":
+                    ligne.append(Flying_fish(x, y))
                 else:
                     ligne.append(None)
             self.matrice.append(ligne)
@@ -95,6 +98,20 @@ class Planet:
         for i in creatures:
             if self.matrice[i.y][i.x] == i:
                 i.life_cycle(self.matrice)
+        self.show_planet()
+
+    def update_planet_V2(self):
+        """Fait avancer la simulation d'un pas.
+
+        Récupère toutes les créatures, puis appelle pour chacune sa méthode ``look_out`` en lui passant la matrice,
+        afin qu'elle observe son environnement et agisse en conséquence.
+        """
+        creatures = self.get_all_creatures()
+        while creatures:
+            index = random.randrange(len(creatures))
+            if self.matrice[creatures[index].y][creatures[index].x] == creatures[index]:
+                creatures[index].life_cycle(self.matrice)
+            creatures.pop(index)
         self.show_planet()
 
 

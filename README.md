@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="image/requin.jpg" alt="Grand requin blanc" width="400">
+</p>
+
+
+
 # Wa-Tor
 
 Ce projet implémente une simulation de l'écosystème **Wa-Tor** en programmation orientée objet. Il s'agit d'une modélisation de vie marine peuplée de poissons et de requins, où chaque entité agit de manière autonome et se déplace en fonction de son environnement.
@@ -32,13 +38,18 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 ## Structure du projet
 
 ```text
-.
+
+├── config/
+│     ├── env_config1.py
+│     └── graph_config.py
+├── image
+│     └── requin.jpg
+├── .gitignore
 ├── main.py                 
-├──                
-│        
-│       
-├── entities/               
-│   ├── animal.py          
+├── planet.py               
+├── graph.py        
+├── xxxxxx/               
+│   ├── flying_fish.py          
 │   ├── fish.py            
 │   └── shark.py           
 └── README.md               

@@ -1,9 +1,9 @@
 #import main
 import random
 
-from fish import Fish
-from shark import Shark
-from flying_fish import Flying_fish
+from world.fish import Fish
+from world.shark import Shark
+from world.flying_fish import Flying_fish
 
 #from config import env_config1 as env_cfg
 from config import env_config1 as env_cfg, graph_config as graph_cfg

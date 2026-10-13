@@ -93,7 +93,6 @@ La simulation évolue tour par tour (chronons). Pour obtenir un écosystème sta
 
 ## Limites connues
 
-*   **Effet de bord de l'aléatoire :** Sur de petites grilles, une mauvaise distribution initiale peut mener à une extinction immédiate.
 *   **Performances :** Le rafraîchissement de la grille en mode console peut scintiller sur certains terminaux Windows.
 
 ---

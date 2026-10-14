@@ -41,7 +41,10 @@ graph = Graph(world, graph_cfg.max_points, graph_cfg.pause)
 while plt.fignum_exists(graph.fig.number):  
     os.system('clear')
     # Fait avancer la simulation d'un chronon (déplacements, reproduction, repas...)
-    world.update_planet_V2()
+    if env_cfg.version_update_planet == "V1":
+        world.update_planet()
+    elif env_cfg.version_update_planet == "V2":
+        world.update_planet_V2()
     # Incrémente le compteur de chronons
     world.chronon += 1
     # Affiche le numéro du chronon courant

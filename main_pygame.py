@@ -4,7 +4,7 @@ from world.fish import Fish
 from world.shark import Shark
 from world.flying_fish import Flying_fish
 from world.super_fish import Super_fish
-from config import env_config1 as env_cfg
+from config import env_config6 as env_cfg
 
 # Configuration de la fenêtre
 pygame.init()
@@ -23,8 +23,8 @@ clock = pygame.time.Clock()
 case_water = (0, 119, 190)  # Bleu ciel
 case_fish = (0, 200, 0)  # Vert 
 case_shark = (200, 0, 0)  # Rouge
-case_flying_fish = (255, 165, 0) #Orange
-case_super_fish = (255, 255, 0) #Jaune
+case_flying_fish = (1, 50, 32) #Vert foncé
+case_super_fish = (255, 165, 0) #Orange
 
 
 running = True
@@ -43,7 +43,10 @@ while running:
             running = False
 
     # On lance l'update de l'objet monde
-    world.update_planet_V2()
+    if env_cfg.version_update_planet == "V1":
+        world.update_planet()
+    elif env_cfg.version_update_planet == "V2":
+        world.update_planet_V2()
 
     # Pour chaque ligne de la matrice
     for row in  range(height_matrice):

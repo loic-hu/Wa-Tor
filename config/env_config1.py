@@ -1,5 +1,7 @@
 """Configuration 1 de la simulation Wa-Tor.
 
+    update_planet() version vague
+
 Ce module regroupe les paramètres de la planète et des différentes espèces.
 Modifier ces valeurs permet de changer le comportement de la simulation sans
 toucher au reste du code.
@@ -28,9 +30,18 @@ Configurations des espèces (dictionnaires):
 
 # planet
 x, y = 60,60
-weight = [99,       1,          0,          0,          0]
+
+weight = [
+    15  #Fish
+    ,8  #Shark
+    ,0  #Flying_fish
+    ,0  #Super_fish
+    ,77 #None
+]
+
 types = ["fish", "shark", "flying_fish", "super_fish", None]
 
+version_update_planet = "V1"
 
 # fish
 fish_config = {

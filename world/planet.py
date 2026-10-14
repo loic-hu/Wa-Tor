@@ -1,14 +1,9 @@
-#import main
 import random
 
 from world.fish import Fish
 from world.shark import Shark
 from world.flying_fish import Flying_fish
 from world.super_fish import Super_fish
-
-#from config import env_config1 as env_cfg
-#from config import env_config1 as env_cfg, graph_config as graph_cfg
-
     
 class Planet:
     """Représente une planète sous forme d'une matrice peuplée de poissons, de requins et de vide.
@@ -24,7 +19,7 @@ class Planet:
         types (list): Types de contenu possibles pour une case (``"fish"``, ``"shark"`` ou ` |`None``).
         matrice (list[list]): Grille 2D contenant les créatures ou ` |`None``.
     """
-    def __init__(self, column, row, weight, types):
+    def __init__(self, column, row, weight, types) -> None:
         """Initialise la planète avec ses dimensions et une grille vide.
 
         Args:
@@ -74,7 +69,7 @@ class Planet:
         return self.matrice
 
 
-    def get_all_creatures(self): 
+    def get_all_creatures(self) -> list[Fish | Shark | Flying_fish | Super_fish]: 
         """Récupère toutes les créatures présentes sur la planète.
 
         Parcourt la matrice et collecte chaque case non vide.
@@ -90,7 +85,7 @@ class Planet:
         return all_creatures
  
 
-    def update_planet(self):
+    def update_planet(self) -> None:
         """Fait avancer la simulation d'un pas.
 
         Récupère toutes les créatures, puis appelle pour chacune sa méthode ``look_out`` en lui passant la matrice,
@@ -103,7 +98,7 @@ class Planet:
                 i.life_cycle(self.matrice)
         self.show_planet()
 
-    def update_planet_V2(self):
+    def update_planet_V2(self) -> None:
         """Fait avancer la simulation d'un pas.
 
         Récupère toutes les créatures, puis appelle pour chacune sa méthode ``look_out`` en lui passant la matrice,
@@ -118,7 +113,7 @@ class Planet:
         self.show_planet()
 
 
-    def show_planet(self):
+    def show_planet(self) -> None:
         """Affiche la planète dans la console.
 
         Les cases vides sont représentées par un bloc bleu (code ANSI ``\033[44m  \033[0m``, symbolisant l'eau).

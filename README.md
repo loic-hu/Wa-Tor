@@ -59,11 +59,13 @@ Chaque espèce utilise la programmation orientée objet (POO) pour suivre des r�
 ├── graph
 │     └── graph.py
 ├── .gitignore
-├── main.py                                   
+├── main.py   
+├── main_pygame.py                            
 ├── world/               
 │   ├── flying_fish.py          
 │   ├── fish.py  
 │   ├── planet.py 
+│   ├── super_fish.py
 │   └── shark.py           
 └── README.md               
 ```

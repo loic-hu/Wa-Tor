@@ -57,12 +57,12 @@ while running:
             # On affiche le carré de couleur correspondant selon le type de la créature
             if isinstance(creature, Shark):
                 pygame.draw.rect(window, case_shark, (column * size_case, row * size_case, size_case, size_case))
-            elif isinstance(creature, Fish):
-                pygame.draw.rect(window, case_fish, (column * size_case, row * size_case, size_case, size_case))
             elif isinstance(creature, Flying_fish):
                 pygame.draw.rect(window, case_flying_fish, (column * size_case, row * size_case, size_case, size_case))
             elif isinstance(creature, Super_fish):
                 pygame.draw.rect(window, case_super_fish, (column * size_case, row * size_case, size_case, size_case))
+            elif isinstance(creature, Fish):
+                pygame.draw.rect(window, case_fish, (column * size_case, row * size_case, size_case, size_case))
             else:
                 pygame.draw.rect(window, case_water, (column * size_case, row * size_case, size_case, size_case))
 

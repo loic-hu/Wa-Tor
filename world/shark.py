@@ -22,7 +22,7 @@ class Shark(Fish):
         pregnancy (int) : le nombre de cycles de l'entité, si pregnancy est égal à gestation_period, alors la reproduction est possible
     """
 
-    def __init__(self, x, y,):
+    def __init__(self, x : int, y : int,) -> None:
         """
         Initialise l'objet Shark avec ses attributs.
         """
@@ -37,7 +37,7 @@ class Shark(Fish):
         self.gestation_period = env_cfg.shark_config["gestation_period"]
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         La réprésentation de l'objet quand on le print() en console.
         Dans notre cas, un carré rouge.
@@ -45,7 +45,7 @@ class Shark(Fish):
 
         return "\033[41m  \033[0m"
 
-    def life_cycle(self, matrice):
+    def life_cycle(self, matrice : list[list]) -> None:
         """
         Fonction gérant le cycle vivant de Shark, appelée par Planet.
 
@@ -81,7 +81,7 @@ class Shark(Fish):
         # Cycle terminé
         return
 
-    def look_out(self, matrice):
+    def look_out(self, matrice : list[list]) -> None:
         """
         Fonction gérant l'observation de l'environnement dans lequel l'entité Shark évolue.
         Elle observe les cases adjacentes cardinalement et agit en conséquence.
@@ -135,26 +135,8 @@ class Shark(Fish):
         else:
             return    
 
-    def move(self, matrice, coordinates):
-        """
-        Fonction gérant le déplacement de l'entité
 
-        [Args]:
-            matrice (List[List[Object]]) : La matrice 2D de l'environnement dans lequel évolue notre entité
-            coordinates (Tuple(int)) : Les coordonnées de la case cible
-        """
-
-        # On efface la présence de l'entité à la position actuelle dans la matrice
-        matrice[self.y][self.x] = None
-        # Puis on place aux nouvelles coordonnées
-        matrice[coordinates[1]][coordinates[0]] = self
-
-        # On update le x et y de l'entité avec les nouvelles coordonées
-        self.x = coordinates[0]
-        self.y = coordinates[1]
-
-
-    def eat(self, matrice, food):
+    def eat(self, matrice : list[list], food : tuple[int,int]) -> None:
         """
         Fonction gérant la capacité de manger de l'identité.
         C'est à dire détruire une instance de poisson, en gagner de l'energie, puis prendre sa place
@@ -182,23 +164,8 @@ class Shark(Fish):
             # Alors on abaisse l'energie à la valeur maximale autorisée
             self.energy = self.max_energy
 
-    
-    def reproduce(self, matrice, origin):
-        """
-        Fonction gérant la reproduction de l'entité
 
-        [Args]:
-            matrice (List[List[Object]]) : La matrice 2D de l'environnement dans lequel évolue notre entité
-            origin (Tupple(int)) : Les coordonées de la case d'origine de Shark après un déplacement
-        """
-
-        # Aux coordonées d'origines dans la matrice, crée une nouvelle entité Shark
-        matrice[origin[1]][origin[0]] = Shark(origin[0], origin[1])
-
-        # Reset le compteur de pregnancy
-        self.pregnancy = 0
-
-    def die(self, matrice):
+    def die(self, matrice : list[list]) -> None:
         """
         Fonction gérant la mort de l'entité
 

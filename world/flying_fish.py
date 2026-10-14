@@ -76,17 +76,3 @@ class Flying_fish(Fish):
         else:
             return      
 
-    
-    def reproduce(self, matrice : list[list], origin : tuple[int,int]) -> None:
-        """
-        Fonction gérant la reproduction de l'entité
-
-        [Args]:
-            matrice (List[List[Object]]) : La matrice 2D de l'environnement dans lequel évolue notre entité
-            origin (Tupple(int)) : Les coordonnées de la case d'origine de Fish après un déplacement
-        """
-        # Aux coordonnées d'origines dans la matrice, crée une nouvelle entité Flying_fish
-        matrice[origin[1]][origin[0]] = Flying_fish(origin[0], origin[1])
-
-        # Reset le compteur de pregnancy
-        self.pregnancy = 0

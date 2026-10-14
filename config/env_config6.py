@@ -12,7 +12,6 @@ Planet:
         ``"flying_fish"``, ``"super_fish"`` ou ``None`` (case vide).
     weight (list[int]): Poids de probabilité associés à chaque élément de
         ``types``, dans le même ordre, utilisés lors du peuplement initial.
-        Ici : 99 poissons, 1 requin, aucune autre espèce, aucune case vide.
 
 Configurations des espèces (dictionnaires):
     fish_config:

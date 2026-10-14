@@ -14,7 +14,7 @@ class Fish:
         pregnancy (int) : le nombre de cycles de l'entité, si pregnancy est égal à gestation_period, alors la reproduction est possible
     """
 
-    def __init__(self, x, y): 
+    def __init__(self, x : int, y : int) -> None: 
 
         from config import env_config1 as env_cfg
 
@@ -23,14 +23,14 @@ class Fish:
         self.pregnancy = 0  
         self.gestation_period = env_cfg.fish_config["gestation_period"]
 
-    def __repr__(self): # Image "F"
+    def __repr__(self) -> str: 
         """
         La réprésentation de l'objet quand on le print() en console.
         Dans notre cas, un carré vert.
         """
         return "\033[42m  \033[0m"
 
-    def life_cycle(self, matrice):
+    def life_cycle(self, matrice : list[list]) -> None:
         """
         Fonction gérant le cycle vivant du Fish appelée par Planet.
 
@@ -54,7 +54,7 @@ class Fish:
         # Cycle terminé
         return
 
-    def look_out(self, matrice):
+    def look_out(self, matrice : list[list]) -> None:
         """
         Fonction gérant l'observation de l'environnement dans lequel l'entité Fish évolue.
         Elle observe les cases adjacentes cardinalement et agit en conséquence.
@@ -90,7 +90,7 @@ class Fish:
         else:
             return    
 
-    def move(self, matrice, coordinates):
+    def move(self, matrice : list[list], coordinates : tuple[int,int]) -> None:
         """
         Fonction gérant le déplacement de l'entité
 
@@ -107,7 +107,7 @@ class Fish:
         self.x = coordinates[0]
         self.y = coordinates[1]
 
-    def reproduce(self, matrice, origin):
+    def reproduce(self, matrice : list[list], origin : tuple[int,int]) -> None:
         """
         Fonction gérant la reproduction de l'entité
 

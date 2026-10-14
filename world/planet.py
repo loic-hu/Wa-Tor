@@ -7,7 +7,7 @@ from world.flying_fish import Flying_fish
 from world.super_fish import Super_fish
 
 #from config import env_config1 as env_cfg
-from config import env_config1 as env_cfg, graph_config as graph_cfg
+#from config import env_config1 as env_cfg, graph_config as graph_cfg
 
     
 class Planet:
@@ -24,7 +24,7 @@ class Planet:
         types (list): Types de contenu possibles pour une case (``"fish"``, ``"shark"`` ou ` |`None``).
         matrice (list[list]): Grille 2D contenant les créatures ou ` |`None``.
     """
-    def __init__(self, column, row, weight):
+    def __init__(self, column, row, weight, types):
         """Initialise la planète avec ses dimensions et une grille vide.
 
         Args:
@@ -38,7 +38,7 @@ class Planet:
         self.row = row
         self.weight = weight
         self.chronon = 1
-        self.types = ["fish", "shark", "flying_fish", "super_fish", None]
+        self.types = types
         self._matrice = []
 
     @property

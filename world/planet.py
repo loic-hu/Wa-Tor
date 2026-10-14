@@ -40,7 +40,7 @@ class Planet:
     def matrice(self) -> list[list[Fish | Shark | Flying_fish | Super_fish | None]]:
         return self._matrice
 
-    def populate(self):
+    def populate(self) -> list[list[Fish | Shark | Flying_fish | Super_fish | None]]:
         """Remplit aléatoirement la grille avec des poissons, des requins ou du vide.
 
         Pour chaque case, un type d'objet est tiré au hasard selon les ``weight`` définis dans ``self.weight``.

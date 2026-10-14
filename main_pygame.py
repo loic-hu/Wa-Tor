@@ -30,7 +30,7 @@ case_super_fish = (255, 255, 0) #Jaune
 running = True
 
 # Création du monde de la simulation, basé sur la config
-world = Planet(env_cfg.x, env_cfg.y, env_cfg.weight)
+world = Planet(env_cfg.x, env_cfg.y, env_cfg.weight, env_cfg.types)
 # Initialisation de la population de ce monde
 world.populate()
 
